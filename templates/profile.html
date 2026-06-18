@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+
+{% block title %}
+My Profile
+{% endblock %}
+
+{% block styles %}
+<link
+    rel="stylesheet"
+    href="{{ url_for(
+        'static',
+        filename='css/profile.css'
+    ) }}"
+>
+{% endblock %}
+
+{% block content %}
+
+<div class="profile-page">
+
+    <div class="profile-card">
+
+        <div class="profile-header">
+
+            <div class="profile-avatar">
+
+                {{ current_user.name[0].upper() }}
+
+            </div>
+
+            <h1>
+
+                {{ current_user.name }}
+
+            </h1>
+
+            <p class="profile-email">
+
+                {{ current_user.email }}
+
+            </p>
+
+        </div>
+
+        <div class="profile-info">
+
+            <div class="info-row">
+
+                <span class="label">
+
+                    Member Since
+
+                </span>
+
+                <span class="value">
+
+                    {{ current_user.created_at.strftime('%d %B %Y') }}
+
+                </span>
+
+            </div>
+
+            <div class="info-row">
+
+                <span class="label">
+
+                    Account Status
+
+                </span>
+
+                <span class="badge success">
+
+                    Active
+
+                </span>
+
+            </div>
+
+            <div class="info-row">
+
+                <span class="label">
+
+                    AI Model
+
+                </span>
+
+                <span class="value">
+
+                    Gemini 2.5 Flash
+
+                </span>
+
+            </div>
+
+        </div>
+
+        <div class="profile-actions">
+
+            <a
+                href="{{ url_for('chat.home') }}"
+                class="secondary-btn"
+            >
+                ← Back to Chat
+            </a>
+
+            <form
+                action="{{ url_for('auth.logout') }}"
+                method="POST"
+            >
+
+                <button
+                    type="submit"
+                    class="danger-btn"
+                >
+
+                    Logout
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

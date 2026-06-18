@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+
+{% block title %}
+Create Account
+{% endblock %}
+
+{% block styles %}
+<link
+    rel="stylesheet"
+    href="{{ url_for(
+        'static',
+        filename='css/auth.css'
+    ) }}"
+>
+{% endblock %}
+
+{% block content %}
+
+<div class="auth-container">
+
+    <div class="auth-card">
+
+        <div class="auth-header">
+
+            <div class="logo">
+
+                AI
+
+            </div>
+
+            <h1>
+
+                Create your account
+
+            </h1>
+
+            <p>
+
+                Join your personal AI Assistant in less than a minute
+
+            </p>
+
+        </div>
+
+        <form
+            method="POST"
+            novalidate
+        >
+
+            {{ form.hidden_tag() }}
+
+            <div class="form-group">
+
+                {{ form.name.label(class="form-label") }}
+
+                {{ form.name(
+                    class="form-control",
+                    placeholder="Full name"
+                ) }}
+
+                {% for error in form.name.errors %}
+
+                    <small class="error">
+
+                        {{ error }}
+
+                    </small>
+
+                {% endfor %}
+
+            </div>
+
+            <div class="form-group">
+
+                {{ form.email.label(class="form-label") }}
+
+                {{ form.email(
+                    class="form-control",
+                    placeholder="Email address"
+                ) }}
+
+                {% for error in form.email.errors %}
+
+                    <small class="error">
+
+                        {{ error }}
+
+                    </small>
+
+                {% endfor %}
+
+            </div>
+
+            <div class="form-group">
+
+                {{ form.password.label(class="form-label") }}
+
+                {{ form.password(
+                    class="form-control",
+                    placeholder="Password"
+                ) }}
+
+                {% for error in form.password.errors %}
+
+                    <small class="error">
+
+                        {{ error }}
+
+                    </small>
+
+                {% endfor %}
+
+            </div>
+
+            <div class="form-group">
+
+                {{ form.confirm_password.label(class="form-label") }}
+
+                {{ form.confirm_password(
+                    class="form-control",
+                    placeholder="Confirm password"
+                ) }}
+
+                {% for error in form.confirm_password.errors %}
+
+                    <small class="error">
+
+                        {{ error }}
+
+                    </small>
+
+                {% endfor %}
+
+            </div>
+
+            {{ form.submit(
+                class="submit-btn",
+                value="Create Account"
+            ) }}
+
+        </form>
+
+        <div class="auth-footer">
+
+            <p>
+
+                Already have an account?
+
+                <a
+                    href="{{ url_for('auth.login') }}"
+                >
+
+                    Sign in
+
+                </a>
+
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

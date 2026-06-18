@@ -1,0 +1,130 @@
+<div
+    class="message {{ message.role }}"
+    data-message-id="{{ message.id }}"
+>
+
+    {% if message.role == "user" %}
+
+        <div class="message-wrapper user-wrapper">
+
+            <div class="message-content">
+
+                {{ message.content | safe }}
+
+            </div>
+
+            <div class="message-actions">
+
+                <button
+                    type="button"
+                    class="icon-btn"
+                    onclick="copyUserMessage(this)"
+                    aria-label="Copy message"
+                    title="Copy"
+                >
+
+                    <span class="icon">Copy</span>
+
+                </button>
+
+                <button
+                    type="button"
+                    class="icon-btn"
+                    onclick="editUserMessage(this)"
+                    aria-label="Edit message"
+                    title="Edit"
+                >
+
+                    <span class="icon">Edit</span>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    {% else %}
+
+        <div class="message-wrapper assistant-wrapper">
+
+            <div class="assistant-avatar">
+
+                AI
+
+            </div>
+
+            <div class="assistant-body">
+
+                <div class="assistant-header">
+
+                    <span class="assistant-name">
+
+                        AI Assistant
+
+                    </span>
+
+                </div>
+
+                <div class="message-content markdown-body">
+
+                    {{ message.content | safe }}
+
+                </div>
+
+                <div class="assistant-actions">
+
+                    <button
+                        type="button"
+                        class="icon-btn"
+                        onclick="copyAssistantMessage(this)"
+                        aria-label="Copy response"
+                        title="Copy"
+                    >
+
+                        <span class="icon">Copy</span>
+
+                    </button>
+
+                    <button
+                        type="button"
+                        class="icon-btn"
+                        onclick="regenerateResponse(this)"
+                        aria-label="Regenerate response"
+                        title="Regenerate"
+                    >
+
+                        <span class="icon">Retry</span>
+
+                    </button>
+
+                    <button
+                        type="button"
+                        class="icon-btn"
+                        aria-label="Like response"
+                        title="Like"
+                    >
+
+                        <span class="icon">Like</span>
+
+                    </button>
+
+                    <button
+                        type="button"
+                        class="icon-btn"
+                        aria-label="Dislike response"
+                        title="Dislike"
+                    >
+
+                        <span class="icon">Dislike</span>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    {% endif %}
+
+</div>

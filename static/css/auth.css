@@ -1,0 +1,394 @@
+/* ==========================================
+   Authentication Page
+========================================== */
+
+.auth-container {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 24px;
+
+    background: #212121;
+}
+
+
+/* ==========================================
+   Auth Card
+========================================== */
+
+.auth-container form {
+
+    width: 100%;
+    max-width: 440px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 20px;
+
+    padding: 40px;
+
+    background: #2f2f2f;
+
+    border: 1px solid #3b3b3b;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 12px 40px rgba(0, 0, 0, 0.35);
+
+}
+
+
+/* ==========================================
+   Heading
+========================================== */
+
+.auth-container h2 {
+
+    font-size: 28px;
+
+    font-weight: 700;
+
+    text-align: center;
+
+    color: #ffffff;
+
+    margin-bottom: 8px;
+
+}
+
+
+/* ==========================================
+   Form Groups
+========================================== */
+
+.form-group {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+}
+
+
+/* ==========================================
+   Labels
+========================================== */
+
+.form-group label {
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    color: #d1d5db;
+
+}
+
+
+/* ==========================================
+   Inputs
+========================================== */
+
+.form-control,
+.auth-container input[type="text"],
+.auth-container input[type="email"],
+.auth-container input[type="password"] {
+
+    width: 100%;
+
+    padding: 14px 16px;
+
+    font-size: 15px;
+
+    color: #ffffff;
+
+    background: #171717;
+
+    border: 1px solid #404040;
+
+    border-radius: 12px;
+
+    outline: none;
+
+    transition:
+        border-color .2s ease,
+        box-shadow .2s ease,
+        background .2s ease;
+
+}
+
+.form-control::placeholder,
+.auth-container input::placeholder {
+
+    color: #8a8a8a;
+
+}
+
+.form-control:focus,
+.auth-container input:focus {
+
+    border-color: #10a37f;
+
+    box-shadow:
+        0 0 0 3px rgba(16,163,127,.18);
+
+}
+
+
+/* ==========================================
+   Remember Me
+========================================== */
+
+.remember-group {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    font-size: 14px;
+
+    color: #d1d5db;
+
+}
+
+.remember-group input[type="checkbox"] {
+
+    width: 16px;
+
+    height: 16px;
+
+    accent-color: #10a37f;
+
+}
+
+
+/* ==========================================
+   Buttons
+========================================== */
+
+.submit-btn,
+.auth-container button {
+
+    width: 100%;
+
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: #10a37f;
+
+    color: #ffffff;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background .2s ease,
+        transform .15s ease;
+
+}
+
+.submit-btn:hover,
+.auth-container button:hover {
+
+    background: #0d8d6d;
+
+}
+
+.submit-btn:active,
+.auth-container button:active {
+
+    transform: scale(.98);
+
+}
+
+
+/* ==========================================
+   Links
+========================================== */
+
+.auth-link {
+
+    text-align: center;
+
+    color: #bdbdbd;
+
+    font-size: 14px;
+
+}
+
+.auth-link a,
+.auth-container a {
+
+    color: #10a37f;
+
+    text-decoration: none;
+
+    font-weight: 500;
+
+    transition: color .2s ease;
+
+}
+
+.auth-link a:hover,
+.auth-container a:hover {
+
+    color: #19c37d;
+
+    text-decoration: underline;
+
+}
+
+
+/* ==========================================
+   Error Messages
+========================================== */
+
+.error {
+
+    color: #ef4444;
+
+    font-size: 13px;
+
+    margin-top: 4px;
+
+}
+
+
+/* ==========================================
+   Success Messages
+========================================== */
+
+.success {
+
+    color: #22c55e;
+
+    font-size: 13px;
+
+    margin-top: 4px;
+
+}
+
+
+/* ==========================================
+   Flash Messages
+========================================== */
+
+.flash-message {
+
+    padding: 14px;
+
+    border-radius: 10px;
+
+    font-size: 14px;
+
+}
+
+.flash-success {
+
+    background: rgba(34,197,94,.15);
+
+    color: #22c55e;
+
+    border: 1px solid rgba(34,197,94,.25);
+
+}
+
+.flash-danger {
+
+    background: rgba(239,68,68,.15);
+
+    color: #ef4444;
+
+    border: 1px solid rgba(239,68,68,.25);
+
+}
+
+.flash-warning {
+
+    background: rgba(234,179,8,.15);
+
+    color: #facc15;
+
+    border: 1px solid rgba(234,179,8,.25);
+
+}
+
+
+/* ==========================================
+   Divider
+========================================== */
+
+.auth-divider {
+
+    display: flex;
+
+    align-items: center;
+
+    color: #7d7d7d;
+
+    font-size: 13px;
+
+}
+
+.auth-divider::before,
+.auth-divider::after {
+
+    content: "";
+
+    flex: 1;
+
+    height: 1px;
+
+    background: #404040;
+
+}
+
+.auth-divider span {
+
+    padding: 0 14px;
+
+}
+
+
+/* ==========================================
+   Responsive
+========================================== */
+
+@media (max-width: 576px) {
+
+    .auth-container {
+
+        padding: 16px;
+
+    }
+
+    .auth-container form {
+
+        padding: 28px 22px;
+
+        border-radius: 16px;
+
+    }
+
+    .auth-container h2 {
+
+        font-size: 24px;
+
+    }
+
+}
