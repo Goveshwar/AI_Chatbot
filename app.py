@@ -1,5 +1,6 @@
-
 # app.py
+
+import os
 
 from flask import (
     Flask,
@@ -15,10 +16,12 @@ from flask_migrate import (
 )
 
 from config import Config
+
 from models import db
 
 
 login_manager = LoginManager()
+
 migrate = Migrate()
 
 login_manager.login_view = (
@@ -39,10 +42,31 @@ def create_app():
     )
 
     # =====================
+    # Create Required Folders
+    # =====================
+
+    os.makedirs(
+        "database",
+        exist_ok=True
+    )
+
+    os.makedirs(
+        "uploads",
+        exist_ok=True
+    )
+
+    os.makedirs(
+        "vectorstore",
+        exist_ok=True
+    )
+
+    # =====================
     # Extensions
     # =====================
 
-    db.init_app(app)
+    db.init_app(
+        app
+    )
 
     migrate.init_app(
         app,
@@ -79,7 +103,7 @@ def create_app():
             return None
 
     # =====================
-    # Blueprints
+    # Register Blueprints
     # =====================
 
     from routes.auth import (
@@ -127,7 +151,9 @@ def create_app():
     # =====================
 
     @app.errorhandler(404)
-    def not_found(error):
+    def not_found(
+        error
+    ):
 
         return (
             render_template(
@@ -137,7 +163,9 @@ def create_app():
         )
 
     @app.errorhandler(500)
-    def internal_error(error):
+    def internal_error(
+        error
+    ):
 
         db.session.rollback()
 
@@ -149,7 +177,7 @@ def create_app():
         )
 
     # =====================
-    # Create Tables
+    # Create Database Tables
     # =====================
 
     with app.app_context():
@@ -160,21 +188,18 @@ def create_app():
 
 
 # =====================
-# App Instance
+# Application Instance
 # =====================
 
 app = create_app()
 
 
 # =====================
-# Run Server
+# Local Development
 # =====================
 
 if __name__ == "__main__":
 
     app.run(
-        host="0.0.0.0",
-        port=8000,
         debug=True
     )
-
